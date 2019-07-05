@@ -35,15 +35,22 @@
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav justify-content-end">
-        <li class="nav-item active">
-        <a class="nav-link btn btn-outline-success" href="">Cart
-            {% if cart|length > 0 %}
-                ${{ cart.get_total_price }} with {{cart|length}} items
+        <li class="nav-item">
+            {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
             {% else %}
-                : Empty
+            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
             {% endif %}
-        </a>
-      </li>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link btn btn-outline-success" href="">Cart
+                {% if cart|length > 0 %}
+                    ${{ cart.get_total_price }} with {{cart|length}} items
+                {% else %}
+                    : Empty
+                {% endif %}
+            </a>
+        </li>
     </ul>
   </div>
 </nav>
