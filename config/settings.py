@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.naver',
     'cart',
     'coupon',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -156,4 +157,4 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 
-CART_ID = 'cart_in_session'
+CART_ID = None
