@@ -157,4 +157,7 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 
-CART_ID = None
+CART_ID = ''
+
+IAMPORT_KEY = os.environ.get('IAMPORT_KEY')
+IAMPORT_SECRET = os.environ.get('IAMPORT_SECRET')
