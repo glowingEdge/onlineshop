@@ -12,7 +12,6 @@ def get_token():
 
     req = requests.post(url, data=access_data)
     access_res = req.json()
-
     if access_res['code'] is 0:
         return access_res['response']['access_token']
     else:

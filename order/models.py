@@ -52,7 +52,6 @@ class OrderTransactionManager(models.Manager):
     def create_new(self, order, amount, success=None, transaction_status=None):
         if not order:
             raise ValueError("주문 오류")
-
         order_hash = hashlib.sha1(str(order.id).encode('utf-8')).hexdigest()
         email_hash = str(order.email).split("@")[0]
         final_hash = hashlib.sha1((order_hash + email_hash).encode('utf-8')).hexdigest()[:10]
@@ -111,7 +110,10 @@ def order_payment_validation(sender, instance, created, *args, **kwargs):
         imp_id = import_transaction['imp_id']
         amount = import_transaction['amount']
 
-        local_transaction = OrderTransaction.objects.filter(merchant_order_id=merchant_order_id, transaction_id=imp_id, amount=amount).exists()
+        local_transaction = OrderTransaction.objects.filter(merchant_order_id=merchant_order_id,
+                                                            transaction_id=imp_id,
+                                                            amount=amount
+                                                            ).exists()
 
         if not import_transaction or not local_transaction:
             raise ValueError("비정상 거래입니다.")
