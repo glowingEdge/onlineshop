@@ -9,7 +9,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-import weasyprint
+# import weasyprint
 
 
 def order_create(request):
